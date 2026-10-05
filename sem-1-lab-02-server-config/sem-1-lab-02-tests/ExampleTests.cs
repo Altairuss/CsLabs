@@ -44,4 +44,11 @@ public class ProgramTests
         Assert.That(Program.CheckConfiguration(0, 8, true, true),
             Is.EqualTo("Запуск невозможен: количество игроков должно быть больше нуля."));
     }
+    
+    [Test]
+    public void CheckConfiguration_TooManyPlayers_HasPriorityOverWarning()
+    {
+        Assert.That(Program.CheckConfiguration(1200, 200, true, false),
+            Is.EqualTo("Запуск возможен с предупреждением: слишком большое кол-во игроков на сервере."));
+    }
 }
